@@ -6,10 +6,10 @@
 
 苹果提供的用来启动别的程序例子（SMJobBless https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html ）运行报错。。
 ##Four types of background processes in OS 
-Login item
-XPC service
-Launch Daemon
-Launch Agent
+1. Login item
+2. XPC service
+3. Launch Daemon
+4. Launch Agent
 
 https://developer.apple.com/library/mac/documentation/macosx/conceptual/bpsystemstartup/Chapters/DesigningDaemons.html#//apple_ref/doc/uid/10000172i-SW4-BBCBHBFBX. 
 
@@ -29,6 +29,7 @@ The XPC Services API, part of libSystem, provides a lightweight mechanism for ba
 
 The documented “modern” way would, I believe, be to ask launchctl, the controlling tool for launchd, which Apple uses to replace init, inetd, crond and a bit more:
 
-`~> sudo launchctl list | grep ssh
+`~> sudo launchctl list | grep ssh`
+
 41032   -   0x100502860.anonymous.sshd
--   0   com.openssh.sshd`
+-   0   com.openssh.sshd
