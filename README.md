@@ -4,7 +4,7 @@
 
 2.获得权限，启动mac server。
 
-苹果提供的用来启动别的程序例子（SMJobBless https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html）运行报错。。
+苹果提供的用来启动别的程序例子（SMJobBless https://developer.apple.com/library/mac/samplecode/SMJobBless/Introduction/Intro.html ）运行报错。。
 ##Four types of background processes in OS 
 Login item
 XPC service
@@ -21,6 +21,14 @@ Agents are managed by launchd, but are run on behalf of the currently logged-in 
 The XPC Services API, part of libSystem, provides a lightweight mechanism for basic interprocess communication integrated with Grand Central Dispatch (GCD) and launchd. The XPC Services API allows you to create lightweight helper tools, called XPC services, that perform work on behalf of your application.
 
 #Tip
-Who is listening on a given TCP port on Mac OS X?
+1. Who is listening on a given TCP port on Mac OS X?
 
 `lsof -n -i4TCP:$PORT | grep LISTEN`
+
+2. How to check the status(running/stopped) of a process/daemon in Mac?
+
+The documented “modern” way would, I believe, be to ask launchctl, the controlling tool for launchd, which Apple uses to replace init, inetd, crond and a bit more:
+
+`~> sudo launchctl list | grep ssh
+41032   -   0x100502860.anonymous.sshd
+-   0   com.openssh.sshd`
